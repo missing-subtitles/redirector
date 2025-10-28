@@ -14,9 +14,10 @@ export default {
 
       // decode percent-encoded URL
       const inputUrl = decodeURIComponent(urlPath)
-
+      // normalize it with scheme, to make URL() happy
+      const normalizedUrl = normalizeUrl(inputUrl)
       // extract shortcode
-      const shortcode = extractShortcode(inputUrl)
+      const shortcode = extractShortcode(normalizedUrl)
       if (!shortcode) return new Response('Invalid YouTube URL', { status: 400 })
 
       // build target URL
@@ -29,6 +30,13 @@ export default {
       return new Response('Internal Server Error: ' + err.message, { status: 500 })
     }
   }
+}
+
+function normalizeUrl(input) {
+  if (!/^https?:\/\//i.test(input)) {
+    return 'https://' + input
+  }
+  return input
 }
 
 function extractShortcode(url) {
