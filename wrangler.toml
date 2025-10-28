@@ -1,0 +1,6 @@
+name = "missub-302"
+main = "src/index.js"
+compatibility_date = "2024-04-01"
+
+[vars]
+MODE = "main"

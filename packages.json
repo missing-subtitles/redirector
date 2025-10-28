@@ -1,0 +1,14 @@
+{
+  "name": "missub-redirector",
+  "version": "0.1.0",
+  "description": "Extract YouTube shortcodes and redirect to subtitles",
+  "main": "src/index.js",
+  "scripts": {
+    "deploy:main": "wrangler deploy --config wrangler.toml",
+    "deploy:raw": "wrangler deploy --config wrangler.raw.toml",
+    "dev": "wrangler dev"
+  },
+  "author": "H3arn",
+  "license": "AGPLv3",
+  "dependencies": {}
+}

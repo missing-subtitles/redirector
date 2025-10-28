@@ -1,8 +1,11 @@
+import configs from '../config.js'
+
+
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
 })
 
-async function handleRequest(request) {
+async function handleRequest(request, env) {
   try {
     // get path after domain, trim spaces
     const { pathname, search } = new URL(request.url)
@@ -19,8 +22,11 @@ async function handleRequest(request) {
     const shortcode = extractShortcode(inputUrl)
     if (!shortcode) return new Response('Invalid YouTube URL', { status: 400 })
 
+    // pick deployment based on env variable
+    const ENV = env.MODE || 'main'
+
     // build target URL
-    const targetUrl = `https://github.com/missing-subtitles/missing-subtitles/tree/master/${shortcode}/${shortcode}.vtt`
+    const targetUrl = configs[ENV].buildTargetUrl(shortcode)
     // console.info(targetUrl)
 
     // redirect
