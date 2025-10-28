@@ -1,4 +1,4 @@
-name = "missub-302"
+name = "main"
 main = "src/index.js"
 compatibility_date = "2024-04-01"
 
