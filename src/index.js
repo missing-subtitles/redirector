@@ -2,7 +2,7 @@ import configs from '../config.js'
 
 export default {
   async fetch(request, env) {
-    const ENV = env.MODE || 'main'
+    const mode = env.MODE || 'main'
     try {
       // get path after domain, trim spaces
       const { pathname, search } = new URL(request.url)
@@ -21,7 +21,7 @@ export default {
       if (!shortcode) return new Response('Invalid YouTube URL', { status: 400 })
 
       // build target URL
-      const targetUrl = configs[ENV].buildTargetUrl(shortcode)
+      const targetUrl = configs[mode].buildTargetUrl(shortcode)
       // console.info(targetUrl)
 
       // redirect
