@@ -9,7 +9,7 @@ export default {
       const urlPath = (pathname + search).slice(1).trim()
 
       // Path "/" 302 to github project home
-      if (!urlPath) return Response.redirect("https:/github.com/missing-subtitles/missing-subtitles", 302)
+      if (!urlPath) return Response.redirect("https:/github.com/missing-subtitles", 302)
       //return new Response('No URL provided', { status: 400 })
 
       // decode percent-encoded URL
