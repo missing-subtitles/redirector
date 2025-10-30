@@ -6,8 +6,6 @@ It extracts the video shortcode from any youtube link and redirects users to eit
 
 Currently supports `(www.)youtube.com` and `youtu.be` links.
 
----
-
 ## Overview
 
 ```plaintext
@@ -16,8 +14,6 @@ https://raw.missub.cc/<youtube_url> → raw .vtt subtitle file
 ```
 
 Both deployments share one codebase, differing only by an environment variable (`MODE`) defined in their respective `wrangler.toml` files.
-
----
 
 ## Example
 
@@ -33,8 +29,6 @@ Redirects to:
 https://raw.githubusercontent.com/missing-subtitles/missing-subtitles/refs/heads/master/dQw4w9WgXcQ/dQw4w9WgXcQ.vtt
 ```
 
----
-
 ## Directory Structure
 
 ```bash
@@ -46,8 +40,6 @@ missing-subtitles-worker/
 ├── wrangler.raw.toml    # raw subdomain deployment
 └── package.json
 ```
-
----
 
 ## Deployment
 
@@ -74,8 +66,6 @@ npm run deploy:main
 npm run deploy:raw
 ```
 
----
-
 ## Configuration
 
 Each `wrangler.toml` defines an environment variable:
@@ -86,8 +76,6 @@ MODE = "main"   # or "raw"
 ```
 
 `index.js` reads this via `env.MODE` to determine which redirect base to use.
-
----
 
 ## Notes
 
