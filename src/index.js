@@ -17,11 +17,11 @@ export default {
       // normalize it with scheme, to make URL() happy
       const normalizedUrl = normalizeUrl(inputUrl)
       // extract shortcode
-      const shortcode = extractShortcode(normalizedUrl)
+      const shortcode = extractYTShortcode(normalizedUrl)
       if (!shortcode) return new Response('Invalid YouTube URL', { status: 400 })
 
       // build target URL
-      const targetUrl = configs[mode].buildTargetUrl(shortcode)
+      const targetUrl = configs[mode].buildYTTargetUrl(shortcode)
       // console.info(targetUrl)
 
       // redirect
@@ -39,7 +39,7 @@ function normalizeUrl(input) {
   return input
 }
 
-function extractShortcode(url) {
+function extractYTShortcode(url) {
   try {
     const u = new URL(url)
 
